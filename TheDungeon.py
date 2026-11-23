@@ -75,12 +75,12 @@ game_loaded = False  # Lippu tarkistamaan ladattiinko peli
 # Tarkistetaan pelaajan ikä. Kysytään aina ohjelman käynnnistyessä
 while True:
     try:
-        player_age = int(input("Enter your age: "))
+        player_age = int(input("Enter your age: ")) # Vaihdetaan HTTP request ja JSON responseksi
         player.age = player_age
         break
     except ValueError:
-        print("Error: Set value is not a number. Try again")
-    print(f"Player age: {player_age}.")
+        print("Error: Set value is not a number. Try again") # Vaihdetaan HTTP request ja JSON responseksi
+    print(f"Player age: {player_age}.") # Vaihdetaan HTTP request ja JSON responseksi
 # jos pelaaja on alle 12 peli sulkeutuu
 if player_age < 12:
     sys.exit("This game is meant for people over the age of 12. Quitting game.")
@@ -88,16 +88,16 @@ if player_age < 12:
 # Avataan ohjeet.txt ja menu.txt pelin alkaessa
 with open("ohjeet.txt", "r") as ohjeet:
     data = ohjeet.read()
-    print(data)
+    print(data) # Vaihdetaan HTTP request ja JSON responseksi
 
-input("Press enter to continue: ")
+input("Press enter to continue: ") # Vaihdetaan HTTP request ja JSON responseksi
 
 while True:
     with open("menu.txt", "r") as menu:
         data = menu.read()
-        print(data)
+        print(data) # Vaihdetaan HTTP request ja JSON responseksi
 
-    navigation = input("Type to navigate: ").lower()
+    navigation = input("Type to navigate: ").lower() # Vaihdetaan HTTP request ja JSON responseksi
 
     if navigation == "load":
         try:
@@ -126,34 +126,34 @@ while True:
                 if room_name in room_directory:
                     current_room = room_directory[room_name]
                 
-            print("Game loaded...")
-            print(f"Welcome back, {player.name} (HP: {player.HP}, Weapon: {weapon_choice.name} DMG: {weapon_choice.damage})!\n")
-            input("Press Enter to continue game: ")
+            print("Game loaded...") # Vaihdetaan HTTP request ja JSON responseksi
+            print(f"Welcome back, {player.name} (HP: {player.HP}, Weapon: {weapon_choice.name} DMG: {weapon_choice.damage})!\n") # Vaihdetaan HTTP request ja JSON responseksi
+            input("Press Enter to continue game: ") # Vaihdetaan HTTP request ja JSON responseksi
             game_loaded = True  # Merkitään, että peli ladattiin. Tämä hyppää pelin intron yli ja jatkaa tallennuspisteestä
             break
             
         except FileNotFoundError:
-            print("\n Saved game file not found: Start a new game. \n")
-            input("Press Enter to continue: ")
+            print("\n Saved game file not found: Start a new game. \n") # Vaihdetaan HTTP request ja JSON responseksi
+            input("Press Enter to continue: ") # Vaihdetaan HTTP request ja JSON responseksi
 
     # Peli alkaa start komennolla
     elif navigation == "start":
         with open("intro.txt", "r") as tiedosto:
             data = tiedosto.read()
-            print(data)
-        input("Press enter to continue: ")
+            print(data) # Vaihdetaan HTTP request ja JSON responseksi
+        input("Press enter to continue: ") # Vaihdetaan HTTP request ja JSON responseksi
         break
 
     else:
-        print("This is not a menu option. Type again.")
+        print("This is not a menu option. Type again.") # Vaihdetaan HTTP request ja JSON responseksi
 
 # Jos peli ladattiin niin ohitetaan pelin intro
 if not game_loaded:
-    player.name = input("Enter your name: ")
+    player.name = input("Enter your name: ") # Vaihdetaan HTTP request ja JSON responseksi
     player_info = print (f"Hello, {player.name} Age: {player.age}")
     print("Stranger: Hey, you. You're finally awake! How are you feeling?")
     print("| Good |     | Bad |")
-    answer1 = input(f"{player.name}: ").lower()
+    answer1 = input(f"{player.name}: ").lower() # Vaihdetaan HTTP request ja JSON responseksi
     if answer1 == "good":
             print("Stranger: I highly doubt that. It's like you fell from the heavens.")
     elif answer1 == "bad":
@@ -182,7 +182,7 @@ if not game_loaded:
     with open("news.txt", "r") as news:
         data = news.read()
         print(data)
-        input("Press Enter to continue: ")
+        input("Press Enter to continue: ") # Vaihdetaan HTTP request ja JSON responseksi
 
     print(f"{player.name}: I need to stop the Goblin Master!\n")
 
@@ -191,7 +191,7 @@ if not game_loaded:
     print(f"A {current_room.monster.name} starts running towards {player.name} What do you do?")
 
     while current_room.monster.HP > 0:
-        input(f"Press Enter to attack the {current_room.monster.name}!")
+        input(f"Press Enter to attack the {current_room.monster.name}!") # Vaihdetaan HTTP request ja JSON responseksi
 
         if weapon_choice.attack():
             print(f"You swing your {weapon_choice.name} and hit the {current_room.monster.name} for {weapon_choice.damage} damage!")
@@ -216,7 +216,7 @@ while True:
 
         # Sama while silmukka tähän, kun elämäpisteet osuu 0 niin silmukka päättyy        
         while current_room.monster.HP > 0:
-                input("Press Enter to attack!\n")
+                input("Press Enter to attack!\n") # Vaihdetaan HTTP request ja JSON responseksi
                 if weapon_choice.attack():
                     print(f"You swing your {weapon_choice.name} and hit the {current_room.monster.name} for {weapon_choice.damage} damage!")
                     current_room.monster.take_damage(weapon_choice.damage)
@@ -327,7 +327,7 @@ while True:
     available_exits = list(current_room.exits.keys())
     print(f"Exits available: {', '.join(available_exits)}")
 
-    move = input("Where do you want to move?: ").lower()
+    move = input("Where do you want to move?: ").lower() # Vaihdetaan HTTP request ja JSON responseksi
     # pelistä poistuminen
     if move == "quit":
         print("Quitting game...")
